@@ -1,11 +1,105 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Curriculum Vitae</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Curriculum Vitae</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
-    <h1>Hello World!</h1>
+  <div id="app" class="container mt-5 footer-space">
+    <div class="text-center">
+      <h1>{{ name }}</h1>
+      <h2>{{ title }}</h2>
+      <p class="contact-info d-flex flex-column align-items-start">
+        <span>
+          <i class="fas fa-envelope"></i>
+          <a :href="'mailto:' + email">{{ email }}</a>
+        </span>
+        <span>
+          <i class="fab fa-github"></i>
+          <a :href="github" target="_blank">{{ githubDisplay }}</a>
+        </span>
+        <span>
+          <i class="fab fa-linkedin"></i>
+          <a :href="linkedin" target="_blank">{{ linkedinDisplay }}</a>
+        </span>
+        <span> <i class="fas fa-map-marker-alt"></i> {{ location }} </span>
+        <span>
+          <i class="fab fa-whatsapp"></i>
+          <a :href="'https://wa.me/5585984100819'" target="_blank">{{ phone }}</a>
+        </span>
+      </p>
+    </div>
+    <div class="mt-4">
+      <h3 class="section-title">Resumo do Perfil</h3>
+      <p class="justified">{{ computedProfileSummary }}</p>
+    </div>
+    <div class="mt-4">
+      <h3 class="section-title">Linguagens de Programação</h3>
+      <ul>
+        <li v-for="lang in programmingLanguages" :key="lang">
+          {{ lang }}
+        </li>
+      </ul>
+    </div>
+    <div class="mt-4">
+      <h3 class="section-title">Libs e Frameworks</h3>
+      <ul>
+        <li v-for="skill in libsFrameworks" :key="skill.name">
+          {{ skill.name }}
+        </li>
+      </ul>
+    </div>
+    <div class="mt-4">
+      <h3 class="section-title">Experiências Relevantes</h3>
+      <div v-for="experience in experiences" :key="experience.company" class="mb-3">
+        <h4 class="highlight-text">
+          {{ experience.role }} - {{ experience.company }}
+        </h4>
+        <small class="experience-period">
+          <i class="fas fa-calendar-alt"></i> {{ experience.period }}
+        </small>
+        <p v-for="task in experience.tasks" :key="task" class="justified">
+          {{ task }}
+        </p>
+      </div>
+    </div>
+    <div class="mt-4">
+      <h3 class="section-title">Educação</h3>
+      <ul>
+        <li v-for="edu in education" :key="edu.institution">
+          <small class="experience-period">
+            <i class="fas fa-calendar-alt"></i> {{ edu.period }}
+          </small>
+          <p>{{ edu.degree }} - {{ edu.institution }}</p>
+        </li>
+      </ul>
+    </div>
+    <div class="mt-4">
+      <h3 class="section-title">Idiomas</h3>
+      <ul>
+        <li v-for="language in languages" :key="language.name">
+          {{ language.name }} - {{ language.proficiency }}
+        </li>
+      </ul>
+    </div>
+
+    <button class="fab-theme d-print-none" title="Alternar Tema" @click="toggleTheme">
+      <i class="fas" :class="isDarkMode ? 'fa-sun' : 'fa-moon'"></i>
+    </button>
+  </div>
+
+  <button class="fab-print d-print-none" title="Imprimir" onclick="window.print()">
+    <i class="fas fa-print"></i>
+  </button>
+
+  <script src="app.js"></script>
 </body>
+
 </html>

@@ -1,0 +1,120 @@
+/* styles.css */
+body {
+  font-family: "Ubuntu", sans-serif;
+  background-color: #fefefe;
+  color: #000000;
+  transition: background-color 0.3s, color 0.3s;
+}
+.section-title {
+  color: #007aff;
+}
+.experience-period {
+  color: #8e8e93;
+}
+.contact-info i {
+  margin-right: 10px;
+}
+a {
+  color: #007aff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+a:hover {
+  text-decoration: none;
+  color: #007aff;
+}
+p,
+.justified {
+  text-align: justify;
+}
+.contact-info {
+  text-align: left;
+}
+.highlight-text {
+  color: #000000;
+  transition: color 0.3s;
+}
+.footer-space {
+  padding-bottom: 50px;
+}
+
+/* Estilos do botão flutuante de impressão e tema */
+.fab-print, .fab-theme {
+  position: fixed;
+  right: 20px;
+  z-index: 1000;
+  background-color: #007aff;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s, transform 0.2s;
+}
+.fab-print {
+  bottom: 20px;
+}
+.fab-theme {
+  bottom: 75px;
+}
+.fab-print:hover, .fab-theme:hover {
+  background-color: #005bb5;
+  transform: scale(1.05);
+}
+.fab-print:focus, .fab-print:active,
+.fab-theme:focus, .fab-theme:active {
+  outline: none;
+  box-shadow: none;
+}
+
+/* Modo escuro - utilizando a classe .dark-mode */
+body.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+body.dark-mode .section-title {
+  color: #82b1ff;
+  transition: color 0.3s;
+}
+body.dark-mode .experience-period {
+  color: #b0bec5;
+  transition: color 0.3s;
+}
+body.dark-mode .contact-info i {
+  color: #e0e0e0;
+  transition: color 0.3s;
+}
+body.dark-mode a {
+  color: #82b1ff;
+}
+body.dark-mode .highlight-text {
+  color: #ffffff;
+}
+
+/* Ao imprimir, força o tema light e esconde os botões */
+@media print {
+  body {
+    background-color: #fefefe !important;
+    color: #000000 !important;
+  }
+  .fab-print, .fab-theme {
+    display: none !important;
+  }
+  a {
+    text-decoration: none !important;
+  }
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.25rem;
+  font-weight: normal;
+}
